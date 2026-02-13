@@ -1,0 +1,18 @@
+repo_name,language,bytes
+leetcode-solutions,Python,3398
+nfl-bdb-2024,Jupyter Notebook,110975
+polars,Rust,14696979
+polars,Python,8543645
+polars,Nix,19687
+polars,Makefile,18211
+polars,CSS,1767
+polars,HTML,821
+polars,RenderScript,1
+roadtrip-planner,Python,28514
+roadtrip-planner,JavaScript,8731
+roadtrip-planner,CSS,788
+roadtrip-planner,HTML,357
+roadtripplanner,Python,28514
+roadtripplanner,JavaScript,6237
+roadtripplanner,CSS,788
+roadtripplanner,HTML,357

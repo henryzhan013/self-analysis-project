@@ -1,0 +1,53 @@
+repo_name,sha,message,author_name,author_email,date,html_url
+Competitive-Programming,54322de1508a411321a161d8910ad30af270bafb,Create 1772E,henryzhan013,147782833+henryzhan013@users.noreply.github.com,2023-12-10T16:41:39Z,https://github.com/henryzhan013/Competitive-Programming/commit/54322de1508a411321a161d8910ad30af270bafb
+Competitive-Programming,59aab40c997b0ef9cc8651a7f15d5bda49455698,Create 1738C,henryzhan013,147782833+henryzhan013@users.noreply.github.com,2023-11-05T02:13:11Z,https://github.com/henryzhan013/Competitive-Programming/commit/59aab40c997b0ef9cc8651a7f15d5bda49455698
+Competitive-Programming,e171169c332167305032247266e55f2cb6cd3ac7,Create 1760F,henryzhan013,147782833+henryzhan013@users.noreply.github.com,2023-11-03T03:13:37Z,https://github.com/henryzhan013/Competitive-Programming/commit/e171169c332167305032247266e55f2cb6cd3ac7
+Competitive-Programming,7dbdf2c1b8b59f07fe9253c05709527e622659dc,Create 1842C,henryzhan013,147782833+henryzhan013@users.noreply.github.com,2023-10-29T13:02:44Z,https://github.com/henryzhan013/Competitive-Programming/commit/7dbdf2c1b8b59f07fe9253c05709527e622659dc
+leetcode-solutions,25f85642794c9e08d36be533e883ccdb89de0f0d,add new stuff,Henry Zhan,hengz@middlebury.edu,2026-02-10T14:59:51Z,https://github.com/henryzhan013/leetcode-solutions/commit/25f85642794c9e08d36be533e883ccdb89de0f0d
+leetcode-solutions,b88d6c229d910f75d72d7056e0e7a862a230fa67,new,Henry Zhan,hengz@middlebury.edu,2026-01-25T06:15:09Z,https://github.com/henryzhan013/leetcode-solutions/commit/b88d6c229d910f75d72d7056e0e7a862a230fa67
+leetcode-solutions,7872d23276cd848a7b8107a2871aaa9662fea61a,1/24/26 practice,Henry Zhan,hengz@middlebury.edu,2026-01-25T05:13:05Z,https://github.com/henryzhan013/leetcode-solutions/commit/7872d23276cd848a7b8107a2871aaa9662fea61a
+leetcode-solutions,102df48ad9e768080a2dc8d97f5b7a010b1e9656,test,Henry Zhan,hengz@middlebury.edu,2026-01-25T00:28:46Z,https://github.com/henryzhan013/leetcode-solutions/commit/102df48ad9e768080a2dc8d97f5b7a010b1e9656
+leetcode-solutions,d4b28ff2708e8f1e362b6284ecdcaff2e2711093,Initial commit,henryzhan13,147782833+henryzhan013@users.noreply.github.com,2026-01-24T23:46:59Z,https://github.com/henryzhan013/leetcode-solutions/commit/d4b28ff2708e8f1e362b6284ecdcaff2e2711093
+polars,4d786a055a7e8749c4a3c07d39f4d4e088a68da3,Merge branch 'pola-rs:main' into main,henryzhan13,147782833+henryzhan013@users.noreply.github.com,2026-02-05T16:33:19Z,https://github.com/henryzhan013/polars/commit/4d786a055a7e8749c4a3c07d39f4d4e088a68da3
+polars,5b2b7eb06d35d25f22e0748ee86d174bfb8cefbd,"fix: reject boolean operands for floor_div at schema level
+
+The supertype change for Unknown(Int) with Boolean caused boolean
+floor_div to bypass the runtime is_primitive_numeric() check by
+casting bool to int before execution. This adds an early rejection
+in get_arithmetic_field to preserve the intended behavior.",Henry Zhan,hengz@middlebury.edu,2026-02-05T16:30:52Z,https://github.com/henryzhan013/polars/commit/5b2b7eb06d35d25f22e0748ee86d174bfb8cefbd
+polars,ffdce8682aa3a78974e75654615992c272c4a52f,Merge branch 'main' into main,henryzhan13,147782833+henryzhan013@users.noreply.github.com,2026-02-02T22:56:32Z,https://github.com/henryzhan013/polars/commit/ffdce8682aa3a78974e75654615992c272c4a52f
+polars,b573865c4cad8d4338b3fa876040779d6b68bbda,fix: handle Unknown(Int) with Boolean in get_supertype,Henry Zhan,hengz@middlebury.edu,2026-01-27T17:53:23Z,https://github.com/henryzhan013/polars/commit/b573865c4cad8d4338b3fa876040779d6b68bbda
+polars,8379fcbb6967d79a1c47fb6fa08a6d54e579cc38,Merge branch 'pola-rs:main' into main,henryzhan13,147782833+henryzhan013@users.noreply.github.com,2026-01-27T17:55:05Z,https://github.com/henryzhan013/polars/commit/8379fcbb6967d79a1c47fb6fa08a6d54e579cc38
+polars,9d406e40c3db08648f3400b32ca2f06ae6e76069,"fix: handle Boolean + Unknown(Float) supertype resolution
+
+Fixes #26261
+
+When computing the supertype of Boolean and Unknown(UnknownKind::Float),
+the code was falling through to Unknown(Any), which later failed to
+materialize. This adds is_bool() to the condition so Boolean + Float
+correctly resolves to Float.",Henry Zhan,hengz@middlebury.edu,2026-01-25T22:06:06Z,https://github.com/henryzhan013/polars/commit/9d406e40c3db08648f3400b32ca2f06ae6e76069
+roadtrip-planner,904f5037adf5f31b70e042d8616bf1e7d470ab6e,adding new features,Henry Zhan,hengz@middlebury.edu,2026-02-09T23:13:19Z,https://github.com/henryzhan013/roadtrip-planner/commit/904f5037adf5f31b70e042d8616bf1e7d470ab6e
+roadtrip-planner,adf766f7f85ece32df899435c7d1f2565d63ca5e,Complete frontend,Henry Zhan,hengz@middlebury.edu,2026-02-06T22:01:25Z,https://github.com/henryzhan013/roadtrip-planner/commit/adf766f7f85ece32df899435c7d1f2565d63ca5e
+roadtrip-planner,1fc37ece69ead5dfc7a6b33044306d8d4e3326ca,"Add React frontend with search, PlaceCard component, and loading state",Henry Zhan,hengz@middlebury.edu,2026-02-06T05:36:09Z,https://github.com/henryzhan013/roadtrip-planner/commit/1fc37ece69ead5dfc7a6b33044306d8d4e3326ca
+roadtrip-planner,8b21b384079fbda67813087bbfeb171b5464cf11,Set up React frontend with basic search bar feature,Henry Zhan,hengz@middlebury.edu,2026-02-05T15:45:15Z,https://github.com/henryzhan013/roadtrip-planner/commit/8b21b384079fbda67813087bbfeb171b5464cf11
+roadtrip-planner,157b8bb8efdee0f421fbf14121412f476a25d337,"Add FastAPI backend and React frontend
+
+- api/main.py: REST API exposing /search, /places, /places/{id}
+  endpoints with CORS support
+- frontend/: React + Vite app with Tailwind CSS and Leaflet map
+  - Search bar for vibe-based queries
+  - Results list with match scores
+  - Interactive map with markers
+  - Place detail modal",Henry Zhan,hengz@middlebury.edu,2026-02-01T23:13:57Z,https://github.com/henryzhan013/roadtrip-planner/commit/157b8bb8efdee0f421fbf14121412f476a25d337
+roadtrip-planner,820e766234b9aaf4d0cfb6cd82afb287ba02f1bb,"Add vibe-based place search pipeline
+
+- fetch_places.py: Collect places from Google Places API
+- compute_embeddings.py: Generate semantic embeddings using sentence-transformers
+- search_places.py: Search places by natural language ""vibe"" queries
+- Include 46 honky-tonks/country bars with precomputed embeddings
+
+Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>",Henry Zhan,hengz@middlebury.edu,2026-01-27T22:13:10Z,https://github.com/henryzhan013/roadtrip-planner/commit/820e766234b9aaf4d0cfb6cd82afb287ba02f1bb
+roadtrip-planner,612dcc0bc4834e5c713d4728597bffc0e70eef51,Initial commit,henryzhan13,147782833+henryzhan013@users.noreply.github.com,2026-01-27T19:29:07Z,https://github.com/henryzhan013/roadtrip-planner/commit/612dcc0bc4834e5c713d4728597bffc0e70eef51
+roadtripplanner,dcd2712f63e0b33fdbac77547395a131eb38ac12,"Initial commit
+
+Created from https://vercel.com/new",henryzhan013,147782833+henryzhan013@users.noreply.github.com,2026-02-06T22:07:44Z,https://github.com/henryzhan013/roadtripplanner/commit/dcd2712f63e0b33fdbac77547395a131eb38ac12

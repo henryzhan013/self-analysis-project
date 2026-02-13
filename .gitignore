@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# Envs
+venv/
+.venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS junk
+.DS_Store
+
+# Data outputs (optional: keep or remove depending on what you want public)
+# If you want to keep CSVs, comment these out.
+# data/
