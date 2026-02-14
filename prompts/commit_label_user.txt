@@ -1,0 +1,10 @@
+Label this Git commit message.
+
+Return JSON with:
+- type: ["feat","fix","docs","chore","refactor","test","other"]
+- tone: ["positive","neutral","frustrated","unclear"]
+- scope_guess: <=6 words or null
+- confidence: number 0..1
+
+Commit message:
+{{message}}

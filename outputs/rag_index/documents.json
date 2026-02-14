@@ -1,0 +1,87 @@
+[
+  {
+    "type": "overview",
+    "repo_name": "Competitive-Programming",
+    "content": "Repository: Competitive-Programming\nDescription: My solutions to competitive programming problems\nPrimary Language: nan\nAll Languages: Unknown\nCreated: 2023-10-29T11:34:30Z\nSize: 103 KB\nIs Fork: False"
+  },
+  {
+    "type": "commits",
+    "repo_name": "Competitive-Programming",
+    "content": "Recent commits for Competitive-Programming:\n- Create 1772E\n- Create 1738C\n- Create 1760F\n- Create 1842C"
+  },
+  {
+    "type": "overview",
+    "repo_name": "leetcode-solutions",
+    "content": "Repository: leetcode-solutions\nDescription: My solutions to leetcode problems\nPrimary Language: Python\nAll Languages: Python\nCreated: 2026-01-24T23:46:59Z\nSize: 6 KB\nIs Fork: False"
+  },
+  {
+    "type": "readme",
+    "repo_name": "leetcode-solutions",
+    "content": "README for leetcode-solutions:\n# leetcode-solutions\nMy solutions to leetcode problems\n"
+  },
+  {
+    "type": "commits",
+    "repo_name": "leetcode-solutions",
+    "content": "Recent commits for leetcode-solutions:\n- add new stuff\n- new\n- 1/24/26 practice\n- test\n- Initial commit"
+  },
+  {
+    "type": "overview",
+    "repo_name": "nfl-bdb-2024",
+    "content": "Repository: nfl-bdb-2024\nDescription: nan\nPrimary Language: Jupyter Notebook\nAll Languages: Jupyter Notebook\nCreated: 2025-08-19T15:18:46Z\nSize: 2715 KB\nIs Fork: False"
+  },
+  {
+    "type": "readme",
+    "repo_name": "nfl-bdb-2024",
+    "content": "README for nfl-bdb-2024:\n# NFL Big Data Bowl 2024 \u2014 Tackle Efficiency\n\n**Solo Tackle Impact Rating (STIR)** is a custom metric designed to measure the *impact and efficiency* of a defender\u2019s solo tackles.  \nInstead of only counting raw tackles, STIR adjusts for context \u2014 such as tackle probability, opportunity, and field impact \u2014 to better capture how much a player truly contributes when making a stop.  \n\nThis repository explores STIR across defensive positions (Linebackers, Defensive Backs, and Defensive Linemen) using data from Weeks 5\u20139 of the 2024 NFL season.  \nIt includes curated datasets, reproducible figures, and an isolated third-party animation notebook for play visualization.  \n\n---\n\n## Example Results\n\nLinebackers \u2014 Efficiency vs Volume  \n![LB efficiency](figures/lb_efficiency_volume.png)\n\nDefensive Backs \u2014 Efficiency vs Volume  \n![DB efficiency](figures/db_efficiency_volume.png)\n\nLinebackers vs Defensive Backs \u2014 Distribution Comparison  \n![LB vs DB](figures/stir_db_vs_lb.png)\n\n---\n\n## Highlights\n- Curated position datasets:  \n  - `results/db_df.csv`  \n  - `results/dl_df.csv`  \n  - `results/lb_df.csv`\n- Reproducible figures via `src/make_figures.py`\n- Core analysis in `notebooks/01_analysis.ipynb`\n- Third-party animation notebook under `notebooks/third_party/` with attribution\n\n---\n\n## Quick Start\n\nUsing Conda:\n\n```bash\nconda env create -f environment.yml\nconda activate nfl-bdb-2024\npython src/make_figures.py\n\n\n\n"
+  },
+  {
+    "type": "overview",
+    "repo_name": "polars",
+    "content": "Repository: polars\nDescription: Extremely fast Query Engine for DataFrames, written in Rust\nPrimary Language: Rust\nAll Languages: Rust, Python, Nix, Makefile, CSS, HTML, RenderScript\nCreated: 2026-01-24T18:00:56Z\nSize: 146658 KB\nIs Fork: True"
+  },
+  {
+    "type": "readme",
+    "repo_name": "polars",
+    "content": "README for polars:\n<h1 align=\"center\">\n  <a href=\"https://pola.rs\">\n    <img src=\"https://raw.githubusercontent.com/pola-rs/polars-static/master/banner/polars_github_banner.svg\" alt=\"Polars logo\">\n  </a>\n</h1>\n\n<div align=\"center\">\n  <a href=\"https://crates.io/crates/polars\">\n    <img src=\"https://img.shields.io/crates/v/polars.svg\" alt=\"crates.io Latest Release\"/>\n  </a>\n  <a href=\"https://pypi.org/project/polars/\">\n    <img src=\"https://img.shields.io/pypi/v/polars.svg\" alt=\"PyPi Latest Release\"/>\n  </a>\n  <a href=\"https://www.npmjs.com/package/nodejs-polars\">\n    <img src=\"https://img.shields.io/npm/v/nodejs-polars.svg\" alt=\"NPM Latest Release\"/>\n  </a>\n  <a href=\"https://community.r-multiverse.org/polars\">\n    <img src=\"https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcommunity.r-multiverse.org%2Fapi%2Fpackages%2Fpolars&query=%24.Version&label=r-multiverse\" alt=\"R-multiverse Latest Release\"/>\n  </a>\n  <a href=\"https://doi.org/10.5281/zenodo.7697217\">\n    <img src=\"https://zenodo.org/badge/DOI/10.5281/zenodo.7697217.svg\" alt=\"DOI Latest Release\"/>\n  </a>\n</div>\n\n<p align=\"center\">\n  <b>Documentation</b>:\n  <a href=\"https://docs.pola.rs/api/python/stable/reference/index.html\">Python</a>\n  -\n  <a href=\"https://docs.rs/polars/latest/polars/\">Rust</a>\n  -\n  <a href=\"https://pola-rs.github.io/nodejs-polars/index.html\">Node.js</a>\n  -\n  <a href=\"https://pola-rs.github.io/r-polars/index.html\">R</a>\n  |\n  <b>StackOverflow</b>:\n  <a href=\"https://stackoverflow.com/questions/tagged/python-polars\">Python</a>\n  -\n  <a href=\"https://stackoverflow.com/questions/tagged/rust-polars\">Rust</a>\n  -\n  <a href=\"https://stackoverflow.com/questions/tagged/nodejs-polars\">Node.js</a>\n  -\n  <a href=\"https://stackoverflow.com/questions/tagged/r-polars\">R</a>\n  |\n  <a href=\"https://docs.pola.rs/\">User guide</a>\n  |\n  <a href=\"https://discord.gg/4UfP5cfBE7\">Discord</a>\n</p>\n\n## Polars: Extremely fast Query Engine for DataFrames, written in Rust\n\nPolars is an analytical query engine written for DataFrames. It is designed to be fast, easy to use\nand expressive. Key features are:\n\n- Lazy | Eager execution\n- Streaming (larger-than-RAM datasets)\n- Query optimization\n- Multi-threaded\n- Written in Rust\n- SIMD\n- Powerful expression API\n- Front end in Python | Rust | NodeJS | R | SQL\n- [Apache Arrow Columnar Format](https://arrow.apache.org/docs/format/Columnar.html)\n\nTo learn more, read the [user guide](https://docs.pola.rs/).\n\n## Performance \ud83d\ude80\ud83d\ude80\n\n### Blazingly fast\n\nPolars is very fast. In fact, it is one of the best performing solutions available. See the\n[PDS-H benchmarks](https://www.pola.rs/benchmarks.html) results.\n\n### Lightweight\n\nPolars is also very lightweight. It comes with zero required dependencies, and this shows in the\nimport times:\n\n- polars: 70ms\n- numpy: 104ms\n- pandas: 520ms\n\n### Handles larger-than-RAM data\n\nIf you have data that does not fit into memory, Polars' query engine is able to process your query\n(or parts of your query) in a streaming fashion. This drasticall"
+  },
+  {
+    "type": "commits",
+    "repo_name": "polars",
+    "content": "Recent commits for polars:\n- Merge branch 'pola-rs:main' into main\n- fix: reject boolean operands for floor_div at schema level\n\nThe supertype change for Unknown(Int) with Boolean caused boolean\nfloor_div to bypass the runtime is_primitive_numeric() check by\ncasting bool to int before execution. This adds an early rejection\nin get_arithmetic_field to preserve the intended behavior.\n- Merge branch 'main' into main\n- fix: handle Unknown(Int) with Boolean in get_supertype\n- Merge branch 'pola-rs:main' into main\n- fix: handle Boolean + Unknown(Float) supertype resolution\n\nFixes #26261\n\nWhen computing the supertype of Boolean and Unknown(UnknownKind::Float),\nthe code was falling through to Unknown(Any), which later failed to\nmaterialize. This adds is_bool() to the condition so Boolean + Float\ncorrectly resolves to Float."
+  },
+  {
+    "type": "overview",
+    "repo_name": "questions",
+    "content": "Repository: questions\nDescription: nan\nPrimary Language: nan\nAll Languages: Unknown\nCreated: 2025-08-20T13:42:34Z\nSize: 179 KB\nIs Fork: True"
+  },
+  {
+    "type": "overview",
+    "repo_name": "roadtrip-planner",
+    "content": "Repository: roadtrip-planner\nDescription: nan\nPrimary Language: Python\nAll Languages: Python, JavaScript, CSS, HTML\nCreated: 2026-01-27T19:29:06Z\nSize: 319 KB\nIs Fork: False"
+  },
+  {
+    "type": "readme",
+    "repo_name": "roadtrip-planner",
+    "content": "README for roadtrip-planner:\n# roadtrip-planner"
+  },
+  {
+    "type": "commits",
+    "repo_name": "roadtrip-planner",
+    "content": "Recent commits for roadtrip-planner:\n- adding new features\n- Complete frontend\n- Add React frontend with search, PlaceCard component, and loading state\n- Set up React frontend with basic search bar feature\n- Add FastAPI backend and React frontend\n\n- api/main.py: REST API exposing /search, /places, /places/{id}\n  endpoints with CORS support\n- frontend/: React + Vite app with Tailwind CSS and Leaflet map\n  - Search bar for vibe-based queries\n  - Results list with match scores\n  - Interactive map with markers\n  - Place detail modal\n- Add vibe-based place search pipeline\n\n- fetch_places.py: Collect places from Google Places API\n- compute_embeddings.py: Generate semantic embeddings using sentence-transformers\n- search_places.py: Search places by natural language \"vibe\" queries\n- Include 46 honky-tonks/country bars with precomputed embeddings\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\n- Initial commit"
+  },
+  {
+    "type": "overview",
+    "repo_name": "roadtripplanner",
+    "content": "Repository: roadtripplanner\nDescription: nan\nPrimary Language: Python\nAll Languages: Python, JavaScript, CSS, HTML\nCreated: 2026-02-06T22:07:35Z\nSize: 271 KB\nIs Fork: False"
+  },
+  {
+    "type": "readme",
+    "repo_name": "roadtripplanner",
+    "content": "README for roadtripplanner:\n# roadtrip-planner"
+  },
+  {
+    "type": "commits",
+    "repo_name": "roadtripplanner",
+    "content": "Recent commits for roadtripplanner:\n- Initial commit\n\nCreated from https://vercel.com/new"
+  }
+]

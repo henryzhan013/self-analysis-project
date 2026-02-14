@@ -1,0 +1,12 @@
+Analyze the sentiment of these commit messages from a developer.
+
+Return JSON with:
+- overall_sentiment: ["very_positive", "positive", "neutral", "negative", "very_negative"]
+- energy_level: ["high", "medium", "low"]
+- professionalism: number 0..1 (how professional/formal the messages are)
+- growth_indicators: list of keywords suggesting learning/improvement
+- frustration_indicators: list of keywords suggesting frustration (empty if none)
+- confidence: number 0..1
+
+Commit messages:
+{{messages}}

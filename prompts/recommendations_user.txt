@@ -1,0 +1,14 @@
+Based on this developer's GitHub profile, suggest what they should build next.
+
+Return JSON with:
+- next_project_ideas: list of 3 project ideas with {title, description, why_good_fit}
+- skills_to_learn: list of 3 skills to develop next with {skill, reason, resources}
+- career_trajectory: brief assessment of their development path
+- strengths: list of 2-3 current strengths
+- growth_areas: list of 2-3 areas for improvement
+- confidence: number 0..1
+
+Developer profile:
+Repositories: {{repos}}
+Languages used: {{languages}}
+Recent activity: {{activity}}

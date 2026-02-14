@@ -1,0 +1,11 @@
+Analyze and cluster these repositories by topic/domain.
+
+Return JSON with:
+- clusters: list of {cluster_name, repos: [repo names], description}
+- primary_focus: the main area this developer focuses on
+- diversity_score: number 0..1 (how diverse are the project topics)
+- emerging_interests: list of newer topic areas based on recent repos
+- confidence: number 0..1
+
+Repositories:
+{{repos}}

@@ -1,0 +1,16 @@
+Extract skills and technologies from this repository information.
+
+Return JSON with:
+- programming_languages: list of languages detected
+- frameworks: list of frameworks/libraries
+- domains: list of domain areas (e.g., "web development", "data science", "competitive programming")
+- tools: list of tools/platforms
+- skill_level: ["beginner", "intermediate", "advanced"] based on project complexity
+- confidence: number 0..1
+
+Repository info:
+Name: {{repo_name}}
+Description: {{description}}
+Primary Language: {{language}}
+README content:
+{{readme}}
