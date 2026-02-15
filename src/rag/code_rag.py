@@ -10,34 +10,10 @@ This system:
 
 import json
 import numpy as np
-import requests
 from pathlib import Path
 from typing import List, Dict, Tuple
-import time
 
-
-class OllamaEmbeddings:
-    """Generate embeddings using Ollama's embedding API."""
-
-    def __init__(self, model: str = "nomic-embed-text", base_url: str = "http://localhost:11434"):
-        self.model = model
-        self.base_url = base_url
-
-    def embed(self, text: str) -> List[float]:
-        """Embed a single text string."""
-        response = requests.post(
-            f"{self.base_url}/api/embeddings",
-            json={"model": self.model, "prompt": text}
-        )
-        response.raise_for_status()
-        return response.json()["embedding"]
-
-    def embed_batch(self, texts: List[str]) -> List[List[float]]:
-        """Embed multiple texts."""
-        embeddings = []
-        for text in texts:
-            embeddings.append(self.embed(text))
-        return embeddings
+from src.llm.ollama_client import OllamaClient
 
 
 class SimpleVectorStore:
@@ -98,10 +74,15 @@ class CodeRAG:
         llm_model: str = "llama3.1:8b",
         base_url: str = "http://localhost:11434"
     ):
-        self.embedder = OllamaEmbeddings(model=embedding_model, base_url=base_url)
-        self.vector_store = SimpleVectorStore()
+        self.client = OllamaClient(base_url=base_url)
+        self.embedding_model = embedding_model
         self.llm_model = llm_model
-        self.base_url = base_url
+        self.vector_store = SimpleVectorStore()
+
+    def _embed(self, text: str) -> List[float]:
+        """Embed text using the shared OllamaClient."""
+        result = self.client.embed(self.embedding_model, text)
+        return result["embedding"]
 
     def index_repositories(self, repos_df, readmes_df, languages_df, commits_df):
         """Index repository data for retrieval."""
@@ -128,7 +109,7 @@ class CodeRAG:
             # Embed and store each chunk
             for chunk in chunks:
                 print(f"  Embedding: {chunk['type']} for {repo_name}...")
-                embedding = self.embedder.embed(chunk["content"])
+                embedding = self._embed(chunk["content"])
                 self.vector_store.add(embedding, chunk)
 
         print(f"Indexed {len(self.vector_store.documents)} chunks from {len(repos_df)} repositories.")
@@ -175,10 +156,8 @@ Is Fork: {repo['is_fork']}"""
 
     def query(self, question: str, top_k: int = 3) -> Dict:
         """Query the RAG system with a natural language question."""
-        start_time = time.time()
-
         # Embed the question
-        query_embedding = self.embedder.embed(question)
+        query_embedding = self._embed(question)
 
         # Retrieve relevant chunks
         results = self.vector_store.search(query_embedding, top_k=top_k)
@@ -196,7 +175,7 @@ Is Fork: {repo['is_fork']}"""
 
         context = "\n\n---\n\n".join(context_parts)
 
-        # Generate answer using LLM
+        # Generate answer using LLM via shared client
         prompt = f"""Based on the following context about GitHub repositories, answer the question.
 
 CONTEXT:
@@ -206,28 +185,20 @@ QUESTION: {question}
 
 Provide a clear, concise answer based only on the information in the context. If the context doesn't contain enough information to answer the question, say so."""
 
-        response = requests.post(
-            f"{self.base_url}/api/chat",
-            json={
-                "model": self.llm_model,
-                "messages": [
-                    {"role": "system", "content": "You are a helpful assistant that answers questions about code repositories based on provided context."},
-                    {"role": "user", "content": prompt}
-                ],
-                "stream": False,
-                "options": {"temperature": 0.3}
-            }
+        response = self.client.chat(
+            model=self.llm_model,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that answers questions about code repositories based on provided context."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3
         )
-        response.raise_for_status()
-        answer = response.json()["message"]["content"]
-
-        latency = time.time() - start_time
 
         return {
             "question": question,
-            "answer": answer,
+            "answer": response["content"],
             "sources": sources,
-            "latency_s": round(latency, 2)
+            "latency_s": response["latency_s"]
         }
 
     def save(self, path: Path):

@@ -23,6 +23,19 @@ class OllamaClient:
             "latency_s": time.time() - t0,
         }
 
+    def embed(self, model, text):
+        """Generate embeddings for text using Ollama's embedding API."""
+        url = f"{self.base_url}/api/embeddings"
+        payload = {"model": model, "prompt": text}
+        t0 = time.time()
+        r = requests.post(url, json=payload, timeout=self.timeout)
+        r.raise_for_status()
+        raw = r.json()
+        return {
+            "embedding": raw.get("embedding", []),
+            "latency_s": time.time() - t0,
+        }
+
     @staticmethod
     def extract_json(text: str):
         t = text.strip()

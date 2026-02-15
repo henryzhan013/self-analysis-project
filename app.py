@@ -41,9 +41,8 @@ def load_data():
 def load_llm_results():
     results = []
 
-    # Load commit labels
-    labels_path = OUTPUTS / "commit_labels.jsonl"
-    if labels_path.exists():
+    # Load commit labels from all model-specific files
+    for labels_path in OUTPUTS.glob("commit_labels__*.jsonl"):
         with open(labels_path) as f:
             for line in f:
                 results.append({"source": "commit_labels", **json.loads(line)})
@@ -219,6 +218,11 @@ elif page == "LLM Analyses":
                 tone_counts = df["tone"].value_counts()
                 fig = px.pie(values=tone_counts.values, names=tone_counts.index, title="Commit Tones")
                 st.plotly_chart(fig, use_container_width=True)
+
+            # Show by model
+            st.subheader("Results by Model")
+            model_counts = df.groupby("model")["type"].count()
+            st.write(f"Total results: {len(df)} ({', '.join([f'{m}: {c}' for m, c in model_counts.items()])})")
         else:
             st.warning("No commit sentiment data available.")
 
@@ -228,23 +232,31 @@ elif page == "LLM Analyses":
         skill_results = [r for r in llm_results if "skills__" in r.get("analysis", "") and r.get("parsed")]
 
         if skill_results:
-            for result in skill_results:
+            # Group by repo and show best result (llama3.1:8b preferred)
+            repos_shown = set()
+            for result in sorted(skill_results, key=lambda x: (x["analysis"], x["model"] != "llama3.1:8b")):
                 repo_name = result["analysis"].replace("skills__", "")
+                if repo_name in repos_shown:
+                    continue
+                repos_shown.add(repo_name)
+
                 parsed = result["parsed"]
 
                 if isinstance(parsed, dict):
                     with st.expander(f"**{repo_name}** ({result['model']})", expanded=True):
-                        skills = parsed.get("skills", [])
-                        if skills:
-                            st.write("**Skills:**", ", ".join(skills[:10]))
+                        # Handle different field names
+                        languages = parsed.get("programming_languages", [])
+                        domains = parsed.get("domains", [])
+                        skill_level = parsed.get("skill_level", [])
+                        confidence = parsed.get("confidence", "N/A")
 
-                        complexity = parsed.get("complexity")
-                        if complexity:
-                            st.write(f"**Complexity:** {complexity}/10")
-
-                        summary = parsed.get("summary")
-                        if summary:
-                            st.write(f"**Summary:** {summary}")
+                        if languages:
+                            st.write("**Languages:**", ", ".join(languages) if isinstance(languages, list) else languages)
+                        if domains:
+                            st.write("**Domains:**", ", ".join(domains) if isinstance(domains, list) else domains)
+                        if skill_level:
+                            st.write("**Skill Level:**", ", ".join(skill_level) if isinstance(skill_level, list) else skill_level)
+                        st.write(f"**Confidence:** {confidence}")
         else:
             st.warning("No skill extraction data available.")
 
@@ -282,26 +294,35 @@ elif page == "LLM Analyses":
 
     elif analysis_type == "Topic Clustering":
         st.subheader("Project Topic Clustering")
+        st.markdown("*Grouping repositories into thematic clusters*")
 
         cluster_results = [r for r in llm_results if r.get("analysis") == "topic_clustering" and r.get("parsed")]
 
         if cluster_results:
-            for result in cluster_results:
-                with st.expander(f"**{result['model']}** clustering", expanded=True):
+            # Show results from each model in tabs
+            tabs = st.tabs([r["model"] for r in cluster_results])
+
+            for tab, result in zip(tabs, cluster_results):
+                with tab:
                     parsed = result["parsed"]
+                    clusters = []
+
                     if isinstance(parsed, dict):
                         clusters = parsed.get("clusters", [])
-                        for cluster in clusters:
-                            if isinstance(cluster, dict):
-                                st.markdown(f"**{cluster.get('theme', 'Unknown')}**")
-                                repos_list = cluster.get("repos", [])
-                                st.write(f"Repos: {', '.join(repos_list)}")
                     elif isinstance(parsed, list):
-                        for cluster in parsed:
-                            if isinstance(cluster, dict):
-                                st.markdown(f"**{cluster.get('theme', 'Unknown')}**")
-                                repos_list = cluster.get("repos", [])
-                                st.write(f"Repos: {', '.join(repos_list)}")
+                        clusters = parsed
+
+                    for cluster in clusters:
+                        if isinstance(cluster, dict):
+                            theme = cluster.get("cluster_name") or cluster.get("theme", "Unknown")
+                            repos_list = cluster.get("repos", [])
+                            desc = cluster.get("description", "")
+
+                            st.markdown(f"### {theme}")
+                            st.write(f"**Repositories:** {', '.join(repos_list)}")
+                            if desc:
+                                st.write(f"*{desc}*")
+                            st.divider()
         else:
             st.warning("No topic clustering data available.")
 
@@ -315,11 +336,18 @@ elif page == "LLM Analyses":
                 with st.expander(f"**{result['model']}** recommendations", expanded=True):
                     parsed = result["parsed"]
                     if isinstance(parsed, dict):
-                        recs = parsed.get("recommendations", parsed.get("projects", []))
+                        # Handle different field names
+                        recs = parsed.get("recommendations") or parsed.get("next_project_ideas") or parsed.get("projects", [])
                         for i, rec in enumerate(recs[:3], 1):
                             if isinstance(rec, dict):
-                                st.markdown(f"**{i}. {rec.get('name', rec.get('title', 'Project'))}**")
-                                st.write(rec.get("description", rec.get("why", "")))
+                                name = rec.get("name") or rec.get("title", "Project")
+                                st.markdown(f"**{i}. {name}**")
+                                desc = rec.get("description", "")
+                                why = rec.get("why") or rec.get("why_good_fit", "")
+                                if desc:
+                                    st.write(desc)
+                                if why:
+                                    st.caption(f"Why: {why}")
                             elif isinstance(rec, str):
                                 st.markdown(f"**{i}.** {rec}")
         else:
@@ -341,7 +369,7 @@ elif page == "Model Comparison":
             latency_data.append({
                 "model": r["model"],
                 "latency_s": r["latency_s"],
-                "source": r["source"]
+                "source": r.get("source", "unknown")
             })
 
     if latency_data:
@@ -363,7 +391,7 @@ elif page == "Model Comparison":
     success_data = []
     for r in llm_results:
         success_data.append({
-            "model": r["model"],
+            "model": r.get("model", "unknown"),
             "success": 1 if r.get("parsed") is not None else 0
         })
 
@@ -374,6 +402,7 @@ elif page == "Model Comparison":
         fig = px.bar(x=rates.index, y=rates.values, color=rates.index,
                      title="Parse Success Rate (%)")
         fig.update_layout(height=350, showlegend=False, yaxis_range=[0, 100])
+        fig.update_xaxes(title="")
         fig.update_yaxes(title="Success Rate (%)")
         st.plotly_chart(fig, use_container_width=True)
 
@@ -391,14 +420,12 @@ elif page == "RAG Demo":
         st.warning("RAG index not found. Please run notebook 06 to build the index first.")
     else:
         st.info("RAG system uses `nomic-embed-text` for embeddings and `llama3.1:8b` for generation.")
+        st.warning("Note: RAG requires Ollama to be running locally.")
 
         # Load RAG system
         @st.cache_resource
         def load_rag():
-            import sys
-            sys.path.insert(0, ".")
             from src.rag.code_rag import CodeRAG
-
             rag = CodeRAG()
             rag.load(rag_index_path)
             return rag
@@ -442,6 +469,7 @@ elif page == "RAG Demo":
 
         except Exception as e:
             st.error(f"Error loading RAG system: {e}")
+            st.code(str(e))
 
 # Footer
 st.sidebar.divider()

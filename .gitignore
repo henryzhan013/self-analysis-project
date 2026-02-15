@@ -22,3 +22,4 @@ venv/
 # Data outputs (optional: keep or remove depending on what you want public)
 # If you want to keep CSVs, comment these out.
 # data/
+.claude/
