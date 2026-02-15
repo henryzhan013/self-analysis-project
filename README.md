@@ -1,6 +1,6 @@
 # GitHub Self-Analysis with Local LLMs
 
-Analyzing my GitHub activity using local LLMs (Ollama) to extract insights about coding patterns and skills.
+Analyzing my GitHub activity using local LLMs (Ollama) to extract insights about coding patterns and skills. Demo Video: https://www.youtube.com/watch?v=DCODohwTcxg
 
 ## Setup Instructions
 
