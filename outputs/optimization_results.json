@@ -1,0 +1,127 @@
+{
+  "temperature_experiments": [
+    {
+      "model": "phi3:mini",
+      "temperature": 0.1,
+      "success_rate": 1.0,
+      "avg_latency": 4.202726682027181
+    },
+    {
+      "model": "phi3:mini",
+      "temperature": 0.3,
+      "success_rate": 1.0,
+      "avg_latency": 3.0699430306752524
+    },
+    {
+      "model": "phi3:mini",
+      "temperature": 0.5,
+      "success_rate": 0.6666666666666666,
+      "avg_latency": 4.2421378294626875
+    },
+    {
+      "model": "phi3:mini",
+      "temperature": 0.7,
+      "success_rate": 0.6666666666666666,
+      "avg_latency": 5.861825307210286
+    },
+    {
+      "model": "llama3.1:8b",
+      "temperature": 0.1,
+      "success_rate": 1.0,
+      "avg_latency": 3.7237186431884766
+    },
+    {
+      "model": "llama3.1:8b",
+      "temperature": 0.3,
+      "success_rate": 1.0,
+      "avg_latency": 3.0016223589579263
+    },
+    {
+      "model": "llama3.1:8b",
+      "temperature": 0.5,
+      "success_rate": 1.0,
+      "avg_latency": 2.801000992457072
+    },
+    {
+      "model": "llama3.1:8b",
+      "temperature": 0.7,
+      "success_rate": 1.0,
+      "avg_latency": 1.6413067976633708
+    },
+    {
+      "model": "mistral:7b",
+      "temperature": 0.1,
+      "success_rate": 1.0,
+      "avg_latency": 3.8043529987335205
+    },
+    {
+      "model": "mistral:7b",
+      "temperature": 0.3,
+      "success_rate": 1.0,
+      "avg_latency": 1.672008752822876
+    },
+    {
+      "model": "mistral:7b",
+      "temperature": 0.5,
+      "success_rate": 1.0,
+      "avg_latency": 1.7761539618174236
+    },
+    {
+      "model": "mistral:7b",
+      "temperature": 0.7,
+      "success_rate": 1.0,
+      "avg_latency": 1.6794087886810303
+    }
+  ],
+  "model_comparison": [
+    {
+      "model": "phi3:mini",
+      "avg_latency": 13.852964210510255,
+      "min_latency": 12.30447006225586,
+      "max_latency": 17.788986921310425,
+      "success_rate": 0.0,
+      "quality_score": 0.0,
+      "speed_score": 7.218671648926222
+    },
+    {
+      "model": "llama3.1:8b",
+      "avg_latency": 2.5157400131225587,
+      "min_latency": 1.5732300281524658,
+      "max_latency": 6.129386901855469,
+      "success_rate": 1.0,
+      "quality_score": 100.0,
+      "speed_score": 39.749735456915964
+    },
+    {
+      "model": "mistral:7b",
+      "avg_latency": 2.144626760482788,
+      "min_latency": 1.5724480152130127,
+      "max_latency": 4.3513877391815186,
+      "success_rate": 1.0,
+      "quality_score": 100.0,
+      "speed_score": 46.628160126794505
+    }
+  ],
+  "prompt_length": [
+    {
+      "prompt_type": "minimal",
+      "prompt_length": 17,
+      "latency_s": 4.064786911010742
+    },
+    {
+      "prompt_type": "short",
+      "prompt_length": 63,
+      "latency_s": 1.7842741012573242
+    },
+    {
+      "prompt_type": "medium",
+      "prompt_length": 115,
+      "latency_s": 1.7513391971588135
+    },
+    {
+      "prompt_type": "long",
+      "prompt_length": 298,
+      "latency_s": 2.120508909225464
+    }
+  ]
+}
