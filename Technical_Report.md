@@ -72,7 +72,7 @@ I used **Ollama** to run local LLMs on my MacBook. Setup was straightforward:
 
 ## 4. What I'd Do With More Time
 
-1. **Ground truth evaluation** - manually label 50-100 commits and measure how well the LLM classifications actually match
+1. **Ground truth evaluation** - manually label all commits and measure how well the LLM classifications actually match
 2. **Embed actual code** - the RAG only indexes READMEs right now, indexing source files would make it way more useful
 3. **Cache LLM responses** - re-running analyses is slow, storing results would speed up iteration
 4. **CI/CD integration** - auto-analyze commits on push and generate weekly activity reports
