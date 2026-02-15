@@ -375,11 +375,17 @@ elif page == "Model Comparison":
             temp_data = opt_results.get("temperature_experiments", [])
             if temp_data:
                 temp_df = pd.DataFrame(temp_data)
-                # Pivot for better display
-                pivot = temp_df.pivot(index="temperature", columns="model", values="success_rate")
-                pivot = pivot * 100  # Convert to percentage
+                temp_df["success_pct"] = temp_df["success_rate"] * 100
 
-                fig = px.line(pivot, markers=True, title="JSON Parse Success by Temperature")
+                # Use grouped bar chart instead of lines to avoid overlap
+                fig = px.bar(
+                    temp_df,
+                    x="temperature",
+                    y="success_pct",
+                    color="model",
+                    barmode="group",
+                    title="JSON Parse Success by Temperature"
+                )
                 fig.update_yaxes(title="Success Rate (%)", range=[0, 105])
                 fig.update_xaxes(title="Temperature")
                 st.plotly_chart(fig, use_container_width=True)
