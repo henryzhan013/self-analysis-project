@@ -58,7 +58,7 @@ I used **Ollama** to run local LLMs on my MacBook. Setup was straightforward:
 ## 3. Top Insights About Myself
 
 ### Coding Patterns
-1. **Afternoon Coder**: Peak commit time is 4-5 PM, spread evenly across weekdays - I'm most productive in late afternoon
+1. **Afternoon Coder**: Peak commit time is 4-6 PM - I'm most productive in late afternoon
 2. **Minimal Documenter**: Average commit message is 10 words. I should write more descriptive commits
 
 ### Technical Profile
