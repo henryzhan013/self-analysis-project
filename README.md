@@ -32,8 +32,14 @@ This project demonstrates the use of **local Large Language Models (LLMs)** for 
 | Model | Avg Latency | Parse Success |
 |-------|-------------|---------------|
 | phi3:mini | ~4s | ~85% |
-| llama3.1:8b | ~10s | ~95% |
-| mistral:7b | ~7s | ~90% |
+| llama3.1:8b | ~2.5s | ~100% |
+| mistral:7b | ~2.1s | ~100% |
+
+### Optimization Findings
+- **Optimal temperature**: 0.3 (balances reliability and variation)
+- **Best model**: llama3.1:8b (highest quality structured output)
+- **Fastest model**: mistral:7b (2.1s average)
+- **Prompt length**: Medium-length prompts perform best (very short prompts increase latency)
 
 ## Project Structure
 

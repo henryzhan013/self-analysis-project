@@ -360,6 +360,53 @@ elif page == "Model Comparison":
     st.title("LLM Model Comparison")
     st.markdown("*Comparing phi3:mini, llama3.1:8b, and mistral:7b*")
 
+    # Optimization findings
+    st.subheader("Optimization Findings")
+
+    opt_path = OUTPUTS / "optimization_results.json"
+    if opt_path.exists():
+        with open(opt_path) as f:
+            opt_results = json.load(f)
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.markdown("**Temperature Optimization**")
+            temp_data = opt_results.get("temperature_experiments", [])
+            if temp_data:
+                temp_df = pd.DataFrame(temp_data)
+                # Pivot for better display
+                pivot = temp_df.pivot(index="temperature", columns="model", values="success_rate")
+                pivot = pivot * 100  # Convert to percentage
+
+                fig = px.line(pivot, markers=True, title="JSON Parse Success by Temperature")
+                fig.update_yaxes(title="Success Rate (%)", range=[0, 105])
+                fig.update_xaxes(title="Temperature")
+                st.plotly_chart(fig, use_container_width=True)
+
+        with col2:
+            st.markdown("**Prompt Length Impact**")
+            prompt_data = opt_results.get("prompt_length", [])
+            if prompt_data:
+                prompt_df = pd.DataFrame(prompt_data)
+                fig = px.bar(prompt_df, x="prompt_type", y="latency_s",
+                            title="Latency by Prompt Length",
+                            color_discrete_sequence=["#2ecc71"])
+                fig.update_xaxes(title="")
+                fig.update_yaxes(title="Latency (s)")
+                st.plotly_chart(fig, use_container_width=True)
+
+        # Recommendations box
+        st.info("""
+        **Optimization Recommendations:**
+        - **Temperature**: 0.3 (reliable JSON output while allowing variation)
+        - **Best Model**: llama3.1:8b (100% success rate, good speed)
+        - **Fastest Model**: mistral:7b (2.1s average)
+        - **Prompt Length**: Medium-length prompts perform best
+        """)
+
+    st.divider()
+
     # Latency comparison
     st.subheader("Response Latency")
 

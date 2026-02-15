@@ -202,6 +202,38 @@ Cross-model agreement on commit classification:
 - Tone agreement: 66.7%
 - Full agreement (both): 52.4%
 
+### 4.4 Optimization Experiments
+
+We conducted systematic experiments to optimize LLM parameters:
+
+**Temperature Optimization:**
+
+| Temperature | phi3:mini | llama3.1:8b | mistral:7b |
+|-------------|-----------|-------------|------------|
+| 0.1 | 100% | 100% | 100% |
+| 0.3 | 100% | 100% | 100% |
+| 0.5 | 67% | 100% | 100% |
+| 0.7 | 67% | 100% | 100% |
+
+**Finding:** Lower temperatures (0.1-0.3) produce more reliable JSON output. Selected **0.3** as optimal.
+
+**Prompt Length Impact:**
+
+| Prompt Type | Length | Latency |
+|-------------|--------|---------|
+| Minimal | 17 chars | 4.06s |
+| Short | 63 chars | 1.78s |
+| Medium | 115 chars | 1.75s |
+| Long | 298 chars | 2.12s |
+
+**Finding:** Very short prompts increase latency due to ambiguity. Medium-length prompts are optimal.
+
+**Optimization Decisions Applied:**
+1. Temperature = 0.3 for structured outputs
+2. Seed = 42 for reproducibility
+3. llama3.1:8b as default model
+4. Medium-length prompts with clear instructions
+
 ---
 
 ## 5. Traditional Data Science
