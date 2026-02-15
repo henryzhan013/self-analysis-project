@@ -43,7 +43,7 @@ streamlit run app.py
 ## Key Findings (Top 5 Insights)
 
 1. **Primary Languages**: Rust (62.6%) and Python (36.7%) dominate my codebase
-2. **Coding Pattern**: Most active on Sundays at 10 PM - weekend project work
+2. **Coding Pattern**: Most active around 4-5 PM across weekdays
 3. **Commit Style**: Short, minimal messages (avg 10 words) - could improve documentation
 4. **Project Themes**: 3 clusters - Competitive Programming, Data Science, Web Apps
 5. **Best Portfolio Project**: roadtrip-planner (full-stack with ML-powered search)
